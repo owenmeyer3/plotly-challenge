@@ -1,79 +1,47 @@
-# Plot.ly Homework - Belly Button Biodiversity
+# Overview
+This project generates webpage visualizations for a navel organism study. The page accepts a user input to identify the test subject, and displays three charts to display the subjects results.
 
-![Bacteria by filterforge.com](Images/bacteria.jpg)
+The project uses D3.js and Plotly.js as its main libraries.
 
-In this assignment, you will build an interactive dashboard to explore the [Belly Button Biodiversity dataset](http://robdunnlab.com/projects/belly-button-biodiversity/), which catalogs the microbes that colonize human navels.
+## Data and Subject Selection
 
-The dataset reveals that a small handful of microbial species (also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people, while the rest were relatively rare.
+1. Data for the navel study is read from samples.json.
 
-## Step 1: Plotly
+2. Test subject's IDs are displayed in the dropdown pane on the left of the page.
 
-1. Use the D3 library to read in `samples.json`.
+3. User selects the subject's ID for visualizations and metadata (age, gender etc.)
 
-2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
+## Metadata Pane
 
-* Use `sample_values` as the values for the bar chart.
+1. The metadata pane shows demographic information for the subject
 
-* Use `otu_ids` as the labels for the bar chart.
+## Horizontal Bar Chart
 
-* Use `otu_labels` as the hovertext for the chart.
+1. The bar chart displays OTU (operating taxinomic units) count for the top 10 OTUs (by count) in the subject's navel. OTUs are clusters of similar organisms.
 
-  ![bar Chart](Images/hw01.png)
+2. y-axis: the OTU ID refers to a specific OTU
 
-3. Create a bubble chart that displays each sample.
+3. x-axis: the OTU count refers to the instance count of each OTU in the subject's navel
 
-* Use `otu_ids` for the x values.
+4. Hover text: Hover text: Hovering over a bar shows the OTU count and OTU label
 
-* Use `sample_values` for the y values.
+## Gauge Chart
 
-* Use `sample_values` for the marker size.
+1. The gauge chart displays the washing behavior of the subject.
 
-* Use `otu_ids` for the marker colors.
+2. The value shown refers to the number of time a subject washes the navel region in an average week
 
-* Use `otu_labels` for the text values.
+## Bubble Chart
 
-![Bubble Chart](Images/bubble_chart.png)
+1. The bubble chart displays OTU count for the each OTU in the subject's navel.
 
-4. Display the sample metadata, i.e., an individual's demographic information.
+3. y-axis: the OTU count refers to the instance count of each OTU in the subject's navel
 
-5. Display each key-value pair from the metadata JSON object somewhere on the page.
+2. x-axis: the OTU ID refers to a specific OTU
 
-![hw](Images/hw03.png)
+3. Bubble size: size is defined by the instance count of each OTU in the subject's navel
 
-6. Update all of the plots any time that a new sample is selected.
+4. Bubble color: color is defined by the OTU ID
 
-Additionally, you are welcome to create any layout that you would like for your dashboard. An example dashboard is shown below:
+5. Hover text: Hovering over a bar shows the OTU count and OTU label
 
-![hw](Images/hw02.png)
-
-## Advanced Challenge Assignment (Optional)
-
-The following task is advanced and therefore optional.
-
-* Adapt the Gauge Chart from <https://plot.ly/javascript/gauge-charts/> to plot the weekly washing frequency of the individual.
-
-* You will need to modify the example gauge code to account for values ranging from 0 through 9.
-
-* Update the chart whenever a new sample is selected.
-
-![Weekly Washing Frequency Gauge](Images/gauge.png)
-
-## Deployment
-
-* Deploy your app to a free static page hosting service, such as GitHub Pages. Submit the links to your deployment and your GitHub repo.
-
-* Ensure your repository has regular commits (i.e. 20+ commits) and a thorough README.md file
-
-## Hints
-
-* Use `console.log` inside of your JavaScript code to see what your data looks like at each step.
-
-* Refer to the [Plotly.js documentation](https://plot.ly/javascript/) when building the plots.
-
-### About the Data
-
-Hulcr, J. et al.(2012) _A Jungle in There: Bacteria in Belly Buttons are Highly Diverse, but Predictable_. Retrieved from: [http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/](http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/)
-
-- - -
-
-© 2019 Trilogy Education Services

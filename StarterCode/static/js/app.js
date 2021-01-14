@@ -1,15 +1,6 @@
 // select tags
 let selDataSetTag = d3.select('#selDataset')
 let data = [];
-let otu_ids = [];
-let sample_values = [];
-let otu_labels = [];
-let selectId = 0;
-
-// medalData.forEach(function(data) {
-//     data.date = dateParser(data.date);
-//     data.medals = +data.medals;
-//   });
 
 // Get data
 d3.json('../data/samples.json').then(dataIn => {
@@ -35,7 +26,6 @@ d3.json('../data/samples.json').then(dataIn => {
     // get initial id
     initialId = selDataSetTag.node().value;
     // Run script for initial id
-    console.log(initialId)
     optionChanged(initialId);
 });
 
@@ -121,12 +111,17 @@ function createBarChart(id, samples){
 };
 
 function createBubbleChart(id, samples){
-    console.log('here');
-    console.log(samples);
     // Cast otu_ids to string to display as categories on bar chart
     let otu_ids = samples.map(row => row.otu_id);
     let sample_values = samples.map(row => row.sample_value);
     let otu_labels = samples.map(row => row.otu_label);
+    console.log()
+    let maxOtuId = d3.max(otu_ids);
+    let bubbleColors = otu_ids.reverse().map(val => `rgb(${127 - val / maxOtuId * 127},0,${127 + val / maxOtuId * 127})`);
+    console.log('here');
+    console.log('max', maxOtuId);
+    console.log('ids', otu_ids.reverse());
+    console.log('colors', bubbleColors);
 
     // Bubble chart data
     var trace1 = {
@@ -135,6 +130,7 @@ function createBubbleChart(id, samples){
         text: otu_labels,
         mode: 'markers',
         marker: {
+            color: bubbleColors,
             size: sample_values.reverse()
         }
     };
@@ -152,44 +148,8 @@ function createBubbleChart(id, samples){
     // Plot Bubble chart
     Plotly.newPlot('bubble', traces, layout);
 };
-
-// function createGaugeChart(id, idMetadata){
-//     let wfreq = idMetadata.wfreq;
-
-//     // Gauge chart data
-//     var trace1 = {
-//         type: 'indicator',
-//         value: wfreq,
-//         delta: { reference: 0 },
-//         gauge: { axis: { visible: true, range: [0, 100] } },
-//         domain: { row: 0, column: 0 }
-//         //title: { text: "Scrubs per Week" },
-
-//     };
-//     var traces = [trace1];
-
-//     // Gauge plot layout
-//     var layout = {
-//         title: `Bacteria Counts in Subject ${id}`,
-//         height: '600',
-//         width: '600',
-//         grid: {rows: 2, columns: 2, pattern: 'independent'},
-//         template: {
-//             data: {
-//                 indicator: {
-//                     title: { text: "Scrubs per Week" },
-//                     mode: "number+delta+gauge",
-//                     delta: {reference: 0}
-//                 }
-//             }
-//         }
-//     };
-
-//     // Plot Gauge chart
-//     Plotly.newPlot('gauge', traces, layout);
-// };
   
-//   Plotly.newPlot('myDiv', data, layout);
+// Plotly.newPlot('myDiv', data, layout);
 function createGaugeChart(id, idMetadata){
     let wfreq = idMetadata.wfreq;
 
