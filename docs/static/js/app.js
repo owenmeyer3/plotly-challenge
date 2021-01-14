@@ -63,13 +63,13 @@ function optionChanged(id){
 
 function fillMetaData(id, idMetadata){
     d3.select('#sample-metadata').html("");
-    d3.select('#sample-metadata').append('p').html(`id: ${idMetadata.id}`);
-    d3.select('#sample-metadata').append('p').html(`ethnicity: ${idMetadata.ethnicity}`);
-    d3.select('#sample-metadata').append('p').html(`gender: ${idMetadata.gender}`);
-    d3.select('#sample-metadata').append('p').html(`age: ${idMetadata.age}`);
-    d3.select('#sample-metadata').append('p').html(`location: ${idMetadata.location}`);
-    d3.select('#sample-metadata').append('p').html(`bbtype: ${idMetadata.bbtype}`);
-    d3.select('#sample-metadata').append('p').html(`wfreq: ${idMetadata.wfreq}`);
+    d3.select('#sample-metadata').append('p').html(`ID: ${idMetadata.id}`);
+    d3.select('#sample-metadata').append('p').html(`Ethnicity: ${idMetadata.ethnicity}`);
+    d3.select('#sample-metadata').append('p').html(`Gender: ${idMetadata.gender}`);
+    d3.select('#sample-metadata').append('p').html(`Age: ${idMetadata.age}`);
+    d3.select('#sample-metadata').append('p').html(`Location: ${idMetadata.location}`);
+    d3.select('#sample-metadata').append('p').html(`Navel Type: ${idMetadata.bbtype}`);
+    d3.select('#sample-metadata').append('p').html(`Wash Frequency: ${idMetadata.wfreq}`);
 }
 
 // Create bar chart, otu vs. sample values, for select id
