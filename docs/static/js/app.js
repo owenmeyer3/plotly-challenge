@@ -3,7 +3,7 @@ let selDataSetTag = d3.select('#selDataset')
 let data = [];
 
 // Get data
-d3.json('../data/samples.json').then(dataIn => {
+d3.json('./samples.json').then(dataIn => {
     // Parse data
     let names = []
     dataIn.names.forEach(function(val){
