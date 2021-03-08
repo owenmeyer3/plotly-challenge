@@ -45,3 +45,5 @@ The project uses D3.js and Plotly.js as its main libraries.
 
 5. Hover text: Hovering over a bar shows the OTU count and OTU label
 
+![](images/capture.png)
+
